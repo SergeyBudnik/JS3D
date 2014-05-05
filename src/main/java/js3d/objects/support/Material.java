@@ -51,37 +51,37 @@ public class Material {
     public static final Material GRAY_MIRROR = new Material(
             new Color(0.0, 0.0, 0.0),
             new Color(0.2, 0.2, 0.2),
-            new Color(1.0, 1.0, 1.0), 1
+            new Color(1.0, 1.0, 1.0), 1, 1
     );
 
     public static final Material BLACK_MIRROR = new Material(
             new Color(0.03, 0.03, 0.03),
             new Color(0.04, 0.04, 0.04),
-            new Color(0.4, 0.4, 0.4), 12
+            new Color(0.4, 0.4, 0.4), 12, 1
     );
 
     public static final Material BLUE_MIRROR = new Material(
             new Color(0.0, 0.0, 0.3),
             new Color(0.2, 0.2, 0.6),
-            new Color(1.0, 1.0, 1.0), 1
+            new Color(1.0, 1.0, 1.0), 1, 1
     );
 
     public static final Material GREEN_MIRROR = new Material(
             new Color(0.0, 0.3, 0.0),
             new Color(0.2, 0.6, 0.2),
-            new Color(0.1, 0.3, 0.1), 1
+            new Color(0.1, 0.3, 0.1), 1, 1
     );
 
     public static final Material YELLOW_MIRROR = new Material(
             new Color(0.175, 0.175, 0.05),
             new Color(0.4, 0.4, 0.2),
-            new Color(0.2, 0.2, 0.1), 1
+            new Color(0.2, 0.2, 0.1), 1, 1
     );
 
     public static final Material RED_MIRROR = new Material(
             new Color(0.0, 0.0, 0.0),
             new Color(0.2, 0.2, 0.2),
-            new Color(0.6, 0.0, 0.0), 1
+            new Color(0.6, 0.0, 0.0), 1, 1
     );
 
     public static final Material RED = new Material(
@@ -91,12 +91,21 @@ public class Material {
     );
 
     public Color ambient, diffuse, specular;
-    public double specularPower;
+    public double specularPower, reflectionRatio;
 
     public Material(Color ambient, Color diffuse, Color specular, double specularPower) {
         this.ambient = ambient;
         this.diffuse = diffuse;
         this.specular = specular;
         this.specularPower = specularPower;
+        this.reflectionRatio = 0;
+    }
+
+    public Material(Color ambient, Color diffuse, Color specular, double specularPower, double reflectionRatio) {
+        this.ambient = ambient;
+        this.diffuse = diffuse;
+        this.specular = specular;
+        this.specularPower = specularPower;
+        this.reflectionRatio = reflectionRatio;
     }
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class ObjModelLoader implements ModelLoader {
     @Override
-    public Model load(File file) throws FileNotFoundException, WrongModelFileFormatException {
+    public Model load(File file, Material m) throws FileNotFoundException, WrongModelFileFormatException {
         List<Vector> vertices = new ArrayList<>();
         List<Vector> normals = new ArrayList<>();
         List<Triangle> triangles = new ArrayList<>();
@@ -36,7 +36,7 @@ public class ObjModelLoader implements ModelLoader {
                     addNormal(normals, lineParts);
                     break;
                 case "f":
-                    addTriangle(triangles, lineParts, normals, vertices);
+                    addTriangle(triangles, lineParts, normals, vertices, m);
                     break;
             }
         }
@@ -76,7 +76,7 @@ public class ObjModelLoader implements ModelLoader {
         }
     }
 
-    private void addTriangle(List<Triangle> triangles, String [] lineParts, List<Vector> normals, List<Vector> vertices)
+    private void addTriangle(List<Triangle> triangles, String [] lineParts, List<Vector> normals, List<Vector> vertices, Material m)
             throws WrongModelFileFormatException {
 
         try {
@@ -88,7 +88,7 @@ public class ObjModelLoader implements ModelLoader {
             int [] vi2 = getVertexInfo(lineParts[2]);
             int [] vi3 = getVertexInfo(lineParts[3]);
 
-            Triangle t = new Triangle(vertices.get(vi1[0]), vertices.get(vi2[0]), vertices.get(vi3[0]), Material.BLUE_MIRROR);
+            Triangle t = new Triangle(vertices.get(vi1[0]), vertices.get(vi2[0]), vertices.get(vi3[0]), m);
 
             /* ToDo: Add textures support */
             /* ToDo: Add normals support */
