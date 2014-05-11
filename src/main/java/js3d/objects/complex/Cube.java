@@ -95,7 +95,7 @@ public class Cube implements ClosedObject {
     @Override
     public void translate(double x, double y, double z) {
         for (SceneObject t : allTs) {
-            t11.translate(x, y, z);
+            t.translate(x, y, z);
         }
 
     }
